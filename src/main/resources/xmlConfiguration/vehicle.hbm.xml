@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Vehicle" table="vehicle_info">
+        <!-- Primary key of a table-->
+        <!-- Composite Key declaration -->
+        <!--<composite-id>
+            <key-property name="studId" column="stud_id" type="int"/>
+            <key-property name="rollNumber" column="stud_roll" type="int"/>
+        </composite-id>-->
+        <id name="registrationNumber" type="int" column="registration_id">
+            <generator class="native"/>
+            <!--<generator class="identity"/>-->
+        </id>
+        <!-- all other column -->
+        <property name="vehicleType" column="vehicle_name" type="java.lang.String"/>
+        <many-to-one name="resident" class="entity.Resident" column="resident_id" cascade="all" unique="true"/>
+    </class>
+</hibernate-mapping>
